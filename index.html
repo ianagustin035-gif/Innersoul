@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>INERSOUL | Ropa Interior & Térmica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080808;
+      --card: #111111;
+      --card-hover: #171717;
+      --gold: #d6b15a;
+      --gold-light: #e8cb7b;
+      --gold-glow: rgba(214,177,90,.22);
+      --wine: #661f2b;
+      --text: #f5f3ef;
+      --muted: #99958d;
+      --border: #282622;
+      --border-light: #3a3731;
+      --green: #25d366;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background: rgba(8,8,8,.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      background: #171715;
+      color: var(--text);
+
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 30px;
+
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+
+      transition: .25s ease;
+    }
+
+    .cart-btn:hover {
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .cart-badge {
+      background: var(--gold);
+      color: #000;
+
+      min-width: 22px;
+      height: 22px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      text-align: center;
+
+      padding: 80px 20px 65px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(214,177,90,.12),
+          transparent 45%
+        ),
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(102,31,43,.10),
+          transparent 45%
+        );
+    }
+
+    .hero-tag {
+      display: inline-block;
+
+      padding: 6px 15px;
+
+      border-radius: 30px;
+
+      border: 1px solid rgba(214,177,90,.35);
+
+      background: rgba(214,177,90,.08);
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      max-width: 750px;
+      margin: auto;
+
+      font-size: clamp(32px, 6vw, 52px);
+      line-height: 1.08;
+
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      max-width: 580px;
+      margin: 18px auto 0;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    /* CONTAINER */
+
+    .container {
+      max-width: 1200px;
+
+      margin: auto;
+
+      padding: 20px 20px 90px;
+    }
+
+    .section-title {
+      margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .products-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+
+      gap: 24px;
+    }
+
+    /* PRODUCT CARD */
+
+    .product-card {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+
+      transition: .3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+
+      background: var(--card-hover);
+
+      border-color: var(--border-light);
+
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.45);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 245px;
+
+      object-fit: cover;
+
+      display: block;
+
+      background: #181818;
+    }
+
+    .product-content {
+      padding: 20px;
+
+      display: flex;
+      flex-direction: column;
+
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: 18px;
+      font-weight: 800;
+
+      margin-bottom: 7px;
+    }
+
+    .product-desc {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 15px;
+
+      min-height: 40px;
+    }
+
+    .product-price {
+      color: var(--gold-light);
+
+      font-size: 22px;
+
+      font-weight: 800;
+
+      margin-bottom: 17px;
+    }
+
+    /* SELECTORES */
+
+    .selector-block {
+      margin-bottom: 15px;
+    }
+
+    .field-label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+    /* COLOR BUTTONS */
+
+    .color-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .color-option {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 7px 10px;
+
+      border-radius: 8px;
+
+      background: #0a0a0a;
+
+      border: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 11px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: .2s ease;
+    }
+
+    .color-option:hover {
+      border-color: var(--gold);
+      color: var(--text);
+    }
+
+    .color-option.selected {
+      border-color: var(--gold);
+
+      color: var(--text);
+
+      background: rgba(214,177,90,.08);
+
+      box-shadow:
+        0 0 0 1px rgba(214,177,90,.15);
+    }
+
+    .color-dot {
+      width: 15px;
+      height: 15px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.25);
+
+      flex-shrink: 0;
+    }
+
+    .dot-black {
+      background: #111;
+    }
+
+    .dot-gray {
+      background: #777;
+    }
+
+    .dot-blue {
+      background: #172b4d;
+    }
+
+    .dot-red {
+      background: #8d1827;
+    }
+
+    .dot-white {
+      background: #eee;
+    }
+
+    .dot-burgundy {
+      background: #641d2a;
+    }
+
+    /* SIZE */
+
+    select {
+      width: 100%;
+
+      background: #090909;
+
+      color: var(--text);
+
+      border: 1px solid var(--border);
+
+      padding: 11px;
+
+      border-radius: 9px;
+
+      font-size: 13px;
+
+      outline: none;
+
+      cursor: pointer;
+
+      transition: .2s;
+    }
+
+    select:focus {
+      border-color: var(--gold);
+    }
+
+    /* ADD BUTTON */
+
+    .add-btn {
+      width: 100%;
+
+      margin-top: auto;
+
+      background: linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold)
+      );
+
+      color: #080808;
+
+      border: none;
+
+      padding: 13px;
+
+      border-radius: 10px;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 20px var(--gold-glow);
+
+      transition: .2s ease;
+    }
+
+    .add-btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 25px var(--gold-glow);
+    }
+
+    /* CART */
+
+    .cart-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(0,0,0,.72);
+
+      backdrop-filter: blur(4px);
+
+      z-index: 999;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: .3s;
+    }
+
+    .cart-overlay.active {
+      opacity: 1;
+
+      pointer-events: auto;
+    }
+
+    .cart-drawer {
+      position: fixed;
+
+      top: 0;
+      right: -430px;
+
+      width: 100%;
+      max-width: 410px;
+
+      height: 100%;
+
+      background: #0d0d0d;
+
+      border-left: 1px solid var(--border);
+
+      z-index: 1000;
+
+      padding: 24px;
+
+      display: flex;
+      flex-direction: column;
+
+      transition: right .3s ease;
+
+      box-shadow:
+        -15px 0 40px rgba(0,0,0,.7);
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding-bottom: 16px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cart-header h3 {
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+
+      color: var(--muted);
+
+      font-size: 27px;
+
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex-grow: 1;
+
+      overflow-y: auto;
+
+      margin: 20px 0;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .empty-cart {
+      color: var(--muted);
+
+      text-align: center;
+
+      margin-top: 45px;
+
+      font-size: 13px;
+    }
+
+    .cart-item {
+      background: #151515;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      padding: 13px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 10px;
+    }
+
+    .cart-item-title {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .cart-item-info {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      margin-top: 4px;
+
+      line-height: 1.6;
+    }
+
+    .cart-item-price {
+      color: var(--gold-light);
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      margin-top: 4px;
+    }
+
+    .remove-btn {
+      align-self: center;
+
+      background: none;
+
+      border: none;
+
+      color: #e05b5b;
+
+      font-size: 16px;
+
+      cursor: pointer;
+    }
+
+    .cart-footer {
+      border-top: 1px solid var(--border);
+
+      padding-top: 17px;
+    }
+
+    .cart-total {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-bottom: 16px;
+
+      font-size: 18px;
+
+      font-weight: 800;
+    }
+
+    #cart-total {
+      color: var(--gold-light);
+    }
+
+    .checkout-btn {
+      width: 100%;
+
+      background: var(--green);
+
+      color: #07140b;
+
+      border: none;
+
+      padding: 14px;
+
+      border-radius: 10px;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition: .2s;
+    }
+
+    .checkout-btn:hover {
+      filter: brightness(1.08);
+
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+
+      padding: 40px 20px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      header {
+        padding: 14px 18px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .cart-btn {
+        padding: 9px 13px;
+      }
+
+      .hero {
+        padding: 65px 18px 50px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .container {
+        padding: 15px 15px 70px;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-drawer {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <a href="#" class="logo">
+    INERSOUL<span>.</span>
+  </a>
+
+  <button class="cart-btn" onclick="toggleCart()">
+    🛒 Carrito
+    <span class="cart-badge" id="cart-count">0</span>
+  </button>
+
+</header>
+
+
+<section class="hero">
+
+  <span class="hero-tag">
+    Colección Premium
+  </span>
+
+  <h1>
+    Confort absoluto.<br>
+    <span>Estilo Inersoul.</span>
+  </h1>
+
+  <p>
+    Ropa interior y térmica pensada para acompañarte
+    todos los días con comodidad, calidad y estilo.
+  </p>
+
+</section>
+
+
+<main class="container">
+
+  <div class="section-title">
+    <h2>Productos destacados</h2>
+    <p>Elegí tu talle y color antes de agregar al carrito.</p>
+  </div>
+
+
+  <div class="products-grid">
+
+
+    <!-- PRODUCTO 1 -->
+
+    <article class="product-card">
+
+      <img
+        src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=600&auto=format&fit=crop"
+        alt="Boxer Clásico Pima"
+        class="product-img"
+      >
+
+      <div class="product-content">
+
+        <h3 class="product-title">
+          Boxer Clásico Pima
+        </h3>
+
+        <p class="product-desc">
+          Algodón suave ultra respirable con elástico reforzado.
+        </p>
+
+        <div class="product-price">
+          $ 18.500 ARS
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Color
+          </label>
+
+          <div class="color-options" id="colors-1">
+
+            <button
+              class="color-option selected"
+              onclick="seleccionarColor(this,'color-1','Negro')"
+            >
+              <span class="color-dot dot-black"></span>
+              Negro
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-1','Azul Oscuro')"
+            >
+              <span class="color-dot dot-blue"></span>
+              Azul oscuro
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-1','Gris')"
+            >
+              <span class="color-dot dot-gray"></span>
+              Gris
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-1','Rojo')"
+            >
+              <span class="color-dot dot-red"></span>
+              Rojo
+            </button>
+
+          </div>
+
+          <input type="hidden" id="color-1" value="Negro">
+
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Talle
+          </label>
+
+          <select id="talle-1">
+
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          class="add-btn"
+          onclick="agregar('Boxer Clásico Pima',18500,'color-1','talle-1')"
+        >
+          Agregar al carrito
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- PRODUCTO 2 -->
+
+    <article class="product-card">
+
+      <img
+        src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=600&auto=format&fit=crop"
+        alt="Boxer Sin Costuras"
+        class="product-img"
+      >
+
+      <div class="product-content">
+
+        <h3 class="product-title">
+          Boxer Sin Costuras
+        </h3>
+
+        <p class="product-desc">
+          Tecnología seamless que se adapta al cuerpo sin marcar.
+        </p>
+
+        <div class="product-price">
+          $ 21.000 ARS
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Color
+          </label>
+
+          <div class="color-options">
+
+            <button
+              class="color-option selected"
+              onclick="seleccionarColor(this,'color-2','Negro')"
+            >
+              <span class="color-dot dot-black"></span>
+              Negro
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-2','Azul Oscuro')"
+            >
+              <span class="color-dot dot-blue"></span>
+              Azul oscuro
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-2','Gris')"
+            >
+              <span class="color-dot dot-gray"></span>
+              Gris
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-2','Rojo')"
+            >
+              <span class="color-dot dot-red"></span>
+              Rojo
+            </button>
+
+          </div>
+
+          <input type="hidden" id="color-2" value="Negro">
+
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Talle
+          </label>
+
+          <select id="talle-2">
+
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          class="add-btn"
+          onclick="agregar('Boxer Sin Costuras',21000,'color-2','talle-2')"
+        >
+          Agregar al carrito
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- PRODUCTO 3 -->
+
+    <article class="product-card">
+
+      <img
+        src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop"
+        alt="Calzón Térmico"
+        class="product-img"
+      >
+
+      <div class="product-content">
+
+        <h3 class="product-title">
+          Calzón Térmico Inersoul
+        </h3>
+
+        <p class="product-desc">
+          Tela térmica ligera para mantener el calor durante los días fríos.
+        </p>
+
+        <div class="product-price">
+          $ 26.000 ARS
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Color
+          </label>
+
+          <div class="color-options">
+
+            <button
+              class="color-option selected"
+              onclick="seleccionarColor(this,'color-3','Negro')"
+            >
+              <span class="color-dot dot-black"></span>
+              Negro
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-3','Gris')"
+            >
+              <span class="color-dot dot-gray"></span>
+              Gris
+            </button>
+
+            <button
+              class="color-option"
+              onclick="seleccionarColor(this,'color-3','Azul Oscuro')"
+            >
+              <span class="color-dot dot-blue"></span>
+              Azul oscuro
+            </button>
+
+          </div>
+
+          <input type="hidden" id="color-3" value="Negro">
+
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Talle
+          </label>
+
+          <select id="talle-3">
+
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          class="add-btn"
+          onclick="agregar('Calzón Térmico Inersoul',26000,'color-3','talle-3')"
+        >
+          Agregar al carrito
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- PRODUCTO 4 -->
+
+    <article class="product-card">
+
+      <img
+        src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=600&auto=format&fit=crop"
+        alt="Pack x3 Boxers"
+        class="product-img"
+      >
+
+      <div class="product-content">
+
+        <h3 class="product-title">
+          Pack x3 Boxers Surtidos
+        </h3>
+
+        <p class="product-desc">
+          Tres unidades con combinaciones de colores clásicos.
+        </p>
+
+        <div class="product-price">
+          $ 48.000 ARS
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Combinación
+          </label>
+
+          <select id="color-4">
+
+            <option value="Negro / Gris / Azul Oscuro">
+              Negro / Gris / Azul
+            </option>
+
+            <option value="3 Negros">
+              Full Black
+            </option>
+
+            <option value="Rojo / Negro / Gris">
+              Rojo / Negro / Gris
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="selector-block">
+
+          <label class="field-label">
+            Talle
+          </label>
+
+          <select id="talle-4">
+
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          class="add-btn"
+          onclick="agregar('Pack x3 Boxers Surtidos',48000,'color-4','talle-4')"
+        >
+          Agregar al carrito
+        </button>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</main>
+
+
+
+<!-- OVERLAY -->
+
+<div
+  class="cart-overlay"
+  id="overlay"
+  onclick="toggleCart()"
+></div>
+
+
+
+<!-- CARRITO -->
+
+<aside
+  class="cart-drawer"
+  id="cart-drawer"
+>
+
+  <div>
+
+    <div class="cart-header">
+
+      <h3>
+        Tu carrito
+      </h3>
+
+      <button
+        class="close-btn"
+        onclick="toggleCart()"
+      >
+        &times;
+      </button>
+
+    </div>
+
+
+    <div
+      class="cart-items"
+      id="cart-items"
+    >
+      <p class="empty-cart">
+        El carrito está vacío.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="cart-footer">
+
+    <div class="cart-total">
+
+      <span>
+        Total:
+      </span>
+
+      <span id="cart-total">
+        $ 0 ARS
+      </span>
+
+    </div>
+
+
+    <button
+      class="checkout-btn"
+      onclick="enviarPedido()"
+    >
+      Comprar por WhatsApp 📲
+    </button>
+
+  </div>
+
+</aside>
+
+
+
+<footer>
+
+  <p>
+    © 2026 <strong>INERSOUL</strong>
+    · Ropa Interior & Térmica
+  </p>
+
+  <p style="margin-top:6px;">
+    Envíos discretos a todo el país
+  </p>
+
+</footer>
+
+
+
+<script>
+
+  /* =========================
+     CARRITO
+  ========================= */
+
+  let carrito = [];
+
+
+  function toggleCart() {
+
+    document
+      .getElementById("cart-drawer")
+      .classList.toggle("active");
+
+    document
+      .getElementById("overlay")
+      .classList.toggle("active");
+
+  }
+
+
+  /* =========================
+     SELECCIÓN DE COLOR
+  ========================= */
+
+  function seleccionarColor(boton, inputId, color) {
+
+    const grupo =
+      boton.parentElement;
+
+    const botones =
+      grupo.querySelectorAll(".color-option");
+
+    botones.forEach(b => {
+
+      b.classList.remove("selected");
+
+    });
+
+
+    boton.classList.add("selected");
+
+
+    document
+      .getElementById(inputId)
+      .value = color;
+
+  }
+
+
+  /* =========================
+     AGREGAR PRODUCTO
+  ========================= */
+
+  function agregar(
+    nombre,
+    precio,
+    selectColorId,
+    selectTalleId
+  ) {
+
+    const color =
+      document
+        .getElementById(selectColorId)
+        .value;
+
+
+    const talle =
+      document
+        .getElementById(selectTalleId)
+        .value;
+
+
+    carrito.push({
+
+      nombre: nombre,
+
+      precio: precio,
+
+      color: color,
+
+      talle: talle
+
+    });
+
+
+    actualizarCarrito();
+
+    toggleCart();
+
+  }
+
+
+  /* =========================
+     ELIMINAR PRODUCTO
+  ========================= */
+
+  function eliminar(index) {
+
+    carrito.splice(index, 1);
+
+    actualizarCarrito();
+
+  }
+
+
+  /* =========================
+     ACTUALIZAR CARRITO
+  ========================= */
+
+  function actualizarCarrito() {
+
+    document
+      .getElementById("cart-count")
+      .innerText = carrito.length;
+
+
+    const container =
+      document.getElementById("cart-items");
+
+
+    let total = 0;
+
+
+    if (carrito.length === 0) {
+
+      container.innerHTML =
+        '<p class="empty-cart">El carrito está vacío.</p>';
+
+      document
+        .getElementById("cart-total")
+        .innerText = "$ 0 ARS";
+
+      return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    carrito.forEach((item,index) => {
+
+      total += item.precio;
+
+
+      container.innerHTML += `
+
+        <div class="cart-item">
+
+          <div>
+
+            <div class="cart-item-title">
+              ${item.nombre}
+            </div>
+
+            <div class="cart-item-info">
+
+              Color:
+              <strong>${item.color}</strong>
+
+              <br>
+
+              Talle:
+              <strong>${item.talle}</strong>
+
+            </div>
+
+            <div class="cart-item-price">
+
+              $ ${item.precio.toLocaleString("es-AR")} ARS
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="remove-btn"
+            onclick="eliminar(${index})"
+            title="Eliminar"
+          >
+            🗑️
+          </button>
+
+        </div>
+
+      `;
+
+    });
+
+
+    document
+      .getElementById("cart-total")
+      .innerText =
+        `$ ${total.toLocaleString("es-AR")} ARS`;
+
+  }
+
+
+  /* =========================
+     WHATSAPP
+  ========================= */
+
+  function enviarPedido() {
+
+    if (carrito.length === 0) {
+
+      alert(
+        "Agregá al menos un producto al carrito."
+      );
+
+      return;
+
+    }
+
+
+    let mensaje = "🛍️ *NUEVO PEDIDO - INERSOUL*\n\n";
+
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+      mensaje += `${index + 1}. *${item.nombre}*\n`;
+      mensaje += `   • Color: ${item.color}\n`;
+      mensaje += `   • Talle: ${item.talle}\n`;
+      mensaje += `   • Precio: $ ${item.precio.toLocaleString("es-AR")} ARS\n\n`;
+
+      total += item.precio;
+    });
+
+    mensaje += `💰 *TOTAL:* $ ${total.toLocaleString("es-AR")} ARS\n\n`;
+    mensaje += "Hola, quiero coordinar el pago y el envío de este pedido.";
+
+    const telefono = "5491150008262";
+
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, "_blank");
+
+  }
+
+</script>
+
+</body>
+</html>
+u
