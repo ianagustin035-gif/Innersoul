@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INNER SOUL | Tienda Oficial</title>
+  <style>
+    :root {
+      --bg-color: #0b0b0e;
+      --card-bg: #141419;
+      --card-border: #23232b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --whatsapp: #25d366;
+      --whatsapp-hover: #1eb954;
+      --text-main: #f4f4f5;
+      --text-muted: #a1a1aa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
+    body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding-bottom: 90px; }
+
+    nav {
+      background-color: rgba(11, 11, 14, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid var(--card-border);
+      padding: 15px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+    
+    .cart-widget {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .hero {
+      text-align: center; padding: 60px 20px 40px;
+      background: radial-gradient(circle at center, #1a1b26 0%, var(--bg-color) 70%);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .hero h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: 3px; margin-bottom: 10px; text-transform: uppercase; }
+    .hero p { font-size: 1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+    .section-title { text-align: center; font-size: 1.8rem; letter-spacing: 2px; margin: 50px 0 25px; text-transform: uppercase; }
+    
+    .container {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
+    }
+
+    .card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+      position: relative; transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .badge {
+      position: absolute; top: 12px; left: 12px; background: #ef4444; color: #fff;
+      font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; z-index: 10;
+    }
+    .card-img-wrapper { width: 100%; height: 260px; overflow: hidden; }
+    .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .title { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .description { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; }
+    .price-tag { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 15px; }
+
+    .btn-add {
+      background-color: var(--accent); color: #fff; border: none; cursor: pointer;
+      font-weight: 700; font-size: 0.9rem; padding: 12px; border-radius: 8px;
+      transition: background 0.2s; width: 100%;
+    }
+    .btn-add:hover { background-color: var(--accent-hover); }
+
+    /* CARRITO FLOTANTE ABAJO */
+    .cart-drawer {
+      position: fixed; bottom: 0; left: 0; width: 100%;
+      background: #141419; border-top: 2px solid var(--whatsapp);
+      padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.8); z-index: 1000;
+    }
+    .cart-total { font-size: 1.1rem; font-weight: bold; color: #fff; }
+    .btn-checkout {
+      background-color: var(--whatsapp); color: #fff; text-decoration: none;
+      padding: 12px 22px; border-radius: 8px; font-weight: bold; font-size: 0.95rem;
+      transition: background 0.2s; display: flex; align-items: center; gap: 8px; cursor: pointer; border: none;
+    }
+    .btn-checkout:hover { background-color: var(--whatsapp-hover); }
+
+    footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.85rem; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">INNER SOUL</div>
+    <div class="cart-widget" id="cart-counter">🛒 0 ítems</div>
+  </nav>
+
+  <header class="hero">
+    <h1>INNER SOUL</h1>
+    <p>Armá tu pedido seleccionando los productos y envianos el carrito directo por WhatsApp.</p>
+  </header>
+
+  <h2 class="section-title">🔥 Combos y Packs</h2>
+  <div class="container">
+    <div class="card">
+      <span class="badge">Ahorrá $4.000</span>
+      <div class="card-img-wrapper"><img src="1791408351384.jpg" alt="Combo Térmico"></div>
+      <div class="info">
+        <div>
+          <div class="title">Combo Térmico Completo</div>
+          <p class="description">1 Remera Térmica + 1 Calzón Largo Térmico.</p>
+        </div>
+        <div>
+          <div class="price-tag">$43.000 ARS</div>
+          <button class="btn-add" onclick="agregarAlCarrito('Combo Térmico Completo', 43000)">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Más Vendido</span>
+      <div class="card-img-wrapper"><img src="1791408770783.jpg" alt="Pack Boxers"></div>
+      <div class="info">
+        <div>
+          <div class="title">Pack x3 Bóxers de Algodón</div>
+          <p class="description">3 Bóxers cortos con elástico personalizado.</p>
+        </div>
+        <div>
+          <div class="price-tag">$32.000 ARS</div>
+          <button class="btn-add" onclick="agregarAlCarrito('Pack x3 Bóxers', 32000)">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Indumentaria Individual</h2>
+  <div class="container">
+    <div class="card">
+      <div class="card-img-wrapper"><img src="1791408351384.jpg" alt="Remera Térmica"></div>
+      <div class="info">
+        <div>
+          <div class="title">Remera Térmica Manga Larga</div>
+          <p class="description">Textura gofrada primera piel.</p>
+        </div>
+        <div>
+          <div class="price-tag">$25.000 ARS</div>
+          <button class="btn-add" onclick="agregarAlCarrito('Remera Térmica Manga Larga', 25000)">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrapper"><img src="1791408277294.jpg" alt="Calzón Largo"></div>
+      <div class="info">
+        <div>
+          <div class="title">Calzón Largo Térmico</div>
+          <p class="description">Primera piel térmica con elástico.</p>
+        </div>
+        <div>
+          <div class="price-tag">$22.000 ARS</div>
+          <button class="btn-add" onclick="agregarAlCarrito('Calzón Largo Térmico', 22000)">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrapper"><img src="1791408770783.jpg" alt="Bóxer Corto"></div>
+      <div class="info">
+        <div>
+          <div class="title">Bóxer Corto de Algodón</div>
+          <p class="description">Algodón suave de uso diario.</p>
+        </div>
+        <div>
+          <div class="price-tag">$12.000 ARS</div>
+          <button class="btn-add" onclick="agregarAlCarrito('Bóxer Corto de Algodón', 12000)">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA INFERIOR DEL CARRITO -->
+  <div class="cart-drawer">
+    <div class="cart-total" id="cart-total-text">Total: $0 ARS</div>
+    <button class="btn-checkout" onclick="enviarWhatsApp()">📲 Enviar Pedido</button>
+  </div>
+
+  <footer>
+    <p>© INNER SOUL - Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- SCRIPT DE JAVASCRIPT CORREGIDO -->
+  <script>
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarCarrito();
+      alert("¡Agregado al carrito: " + nombre + "!");
+    }
+
+    function actualizarCarrito() {
+      let total = 0;
+      carrito.forEach(item => { total += item.precio; });
+      
+      document.getElementById('cart-counter').innerText = "🛒 " + carrito.length + " ítems";
+      document.getElementById('cart-total-text').innerText = "Total: $" + total.toLocaleString('es-AR') + " ARS";
+    }
+
+    function enviarWhatsApp() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío. ¡Agregá algún producto antes de enviar el pedido!");
+        return;
+      }
+
+      let mensaje = "¡Hola! Quiero hacer el siguiente pedido en INNER SOUL:\n\n";
+      let total = 0;
+      
+      carrito.forEach((item, index) => {
+        mensaje += (index + 1) + ". " + item.nombre + " - $" + item.precio.toLocaleString('es-AR') + " ARS\n";
+        total += item.precio;
+      });
+
+      mensaje += "\n*TOTAL A PAGAR: $" + total.toLocaleString('es-AR') + " ARS*";
+      
+      // Tu número configurado correctamente con característica de Argentina
+      let numeroWhatsApp = "5491150008262"; 
+      let url = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensaje);
+      
+      // Abre WhatsApp automáticamente con el pedido armado
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
